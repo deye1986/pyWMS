@@ -1,0 +1,1 @@
+Mini warehouse management system that generates a SKU (stock keeping unit) that takes the first 2 letters of the item name and the first 2 of the category, to be further developed. The paradigm is OOP.
