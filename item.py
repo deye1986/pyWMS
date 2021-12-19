@@ -17,5 +17,9 @@ class Item:
     def getSKU(self):
         firstHalf = self.name[:2]
         secondHalf = self.category[:2]
-        print(firstHalf + secondHalf)
+        return firstHalf + secondHalf
 
+    def saveItem(self):
+        x = self.getSKU()
+        with open('sku.txt', 'w') as f:
+            f.write(x)
