@@ -14,5 +14,9 @@ def run():
     lighter.locateItem()
 
     phone.saveItem()
+    lighter.saveItem()
+    tin.saveItem()
+
+
 
 run()
