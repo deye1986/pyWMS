@@ -12,6 +12,4 @@ def runTests():
     lighter.storeItem()
     desktopCPU.storeItem()
     beans.storeItem()
-
-
-runTests()
+    print(' ** Alert ** Generated /inventory.txt file and populated with item details.')
