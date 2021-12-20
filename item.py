@@ -26,12 +26,14 @@ class Item:
         stockRecord = []
         self.createSKU = self.getSKU()
         self.itemDetails = [self.name, self.category, self.qty, self.isUsed, self.createSKU]
-        print(self.itemDetails)
+        print(' ** Alert ** Creating inventory : ' + str(self.itemDetails))
         itemLocation = self.placeItem()
         stockRecord.append(self.itemDetails)
         stockRecord.append(itemLocation)
         with open("inventory.txt", "a") as inventoryFile:
             inventoryFile.write(str(self.itemDetails + self.zone) + '\n')
+            inventoryFile.close()
+        return stockRecord
 
 
     def placeItem(self):
@@ -47,4 +49,6 @@ class Item:
     def locateItem(self): # test method.
         methodName = str(self.name)
         print(methodName, self.zone)
+
+
 

@@ -11,5 +11,4 @@ def runTests():
     lighter.storeItem()
     desktopCPU.storeItem()
 
-
 runTests()
