@@ -33,7 +33,7 @@ class Item:
         with open("inventory.txt", "a") as inventoryFile:
             inventoryFile.write(str(self.itemDetails + self.zone) + '\n')
             inventoryFile.close()
-        return stockRecord
+        
 
 
     def placeItem(self):
