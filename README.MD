@@ -1,4 +1,4 @@
-Warehouse management system that generates a SKU (stock keeping unit) that takes the first 3 letters of the item name and the first 3 <br/>
+Orion - Warehouse management system that generates a SKU (stock keeping unit) that takes the first 3 letters of the item name and the first 3 <br/>
 of the category, to be further developed.<br/>
 
 
@@ -13,4 +13,11 @@ in order to avoid duplicate SKU codes for items with similar names.<br/>
 
 Binded functions and methods to the GUI for interactivity.<br>
 Cleaned code (slightly)<br>
+
+26.12.2021
+Prior to this log an issue was discovered. The layout manager method; grid() was positioning widgets<br>
+in relation to other widgets which presented a GUI issue. To resolve this, place(), grid() and pack()<br>
+layout manager methods were considered but for ease of use and relative simplicity of organizing widgets<br>
+in frames, the pack() layout managerbecomes the layout manager. The GUI is now compact and ready to <br> feature new functionality.<br>
+The application is now named Orion.<br>
            
