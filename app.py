@@ -11,77 +11,87 @@ def demoButtonClicked():
 def refreshStatusButtonClicked():
     try:
         with open('inventory.txt', 'r') as invDataCheck:
-            if invDataCheck != True:
-                programStatusFine.grid(row=1, column=3)
-                invDataCheck.close()
+            programStatusLabelChecking.pack_forget()
+            programStatusError.pack_forget()
+            programStatusFine.pack()
+            invDataCheck.close()
     except:
-        programStatusError.grid(row=1, column=3)
+        programStatusLabelChecking.pack_forget()
+        programStatusError.pack()
 
 
-window.title('Stocklink Lite - v.0 development build - by David Ikin')
-window.minsize(width=800, height=400)
+window.title('Stocklink Lite - v.0 development build - David Ikin 2021')
+
+frameLeft = tk.Frame()
+frameRight = tk.Frame()
+upperFrame = tk.Frame()
+
+
+searchBarEntry = tk.StringVar()
+
+mainPortion = tk.Canvas(
+    frameRight,
+    bg='red')
 
 label = tk.Label(
+    upperFrame,
     text='Stocklink Lite: Prototype build v.0',
     font='Ariel',
-    bg='white',
-    width=40,
-    height=2
-)
+    bg='white')
+
 entryText = tk.Label(
+    frameLeft,
     text='Search Inventory:',
-    font = 'Ariel',
-    height = 2,
-    width=24
-)
+    font = 'Ariel')
+
 programStatusLabelChecking = tk.Label(
+    upperFrame,
     text='Status check...',
-    bg='blue',
-    width=24,
-    height=2
-)
+    bg='blue')
+
 programStatusError = tk.Label(
+    upperFrame,
     text='Error: No data.',
-    bg='red',
-    width=24,
-    height=2
-)
+    bg='red')
+
 programStatusFine = tk.Label(
+    upperFrame,
     text='System Online.',
-    bg='green',
-    width=24,
-    height=2
-)
+    bg='green')
+
 entry = tk.Entry(
-    width=75,    
+    frameLeft,
+    textvariable=searchBarEntry,
 )
 searchButton = tk.Button(
-    width=24,
-    text='search'
-)
+    frameLeft,
+    text='search')
+
 generateInventoryButton = tk.Button(
-    width=18,
-    height=3,
+    frameLeft,
     text='Create Demo Inventory',
-    command=demoButtonClicked
-)
+    command=demoButtonClicked)
+
 refreshStatusButton = tk.Button(
-    width=18,
-    height=3,
+    frameLeft,
     text='Refresh',
-    command=refreshStatusButtonClicked
-)
+    command=refreshStatusButtonClicked)
 
-label.grid(row=1, column=0, columnspan=2)
+frameLeft.pack()
+frameRight.pack()
+upperFrame.pack()
 
-programStatusLabelChecking.grid(row=1, column=3)
+label.pack()
 
-entry.grid(row=2, column=1, columnspan=1)
-searchButton.grid(row=2, column=3, columnspan=1)
-entryText.grid(row=2, columnspan=1, column=0)
+programStatusLabelChecking.pack()
 
-generateInventoryButton.grid(row=3, column=0)
-refreshStatusButton.grid(row=4, column=0)
+entryText.pack()
+entry.pack()
+searchButton.pack()
 
+generateInventoryButton.pack()
+refreshStatusButton.pack()
+
+mainPortion.pack()
 
 window.mainloop()
