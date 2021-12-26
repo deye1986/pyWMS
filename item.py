@@ -34,6 +34,7 @@ class Item:
         itemLocation = self.placeItem()
         stockRecord.append(self.itemDetails)
         stockRecord.append(itemLocation)
+        print(stockRecord)
         with open("inventory.txt", "a") as inventoryFile:
             inventoryFile.write(str(self.itemDetails + self.zone) + '\n')
             inventoryFile.close()
@@ -52,3 +53,11 @@ class Item:
     def locateItem(self): # test method for development.
         methodName = str(self.name)
         print(methodName, self.zone)
+
+    def inventory():
+        stores = []
+        with open('inventory.txt', 'r') as inventoryFile:
+            for individualItem in inventoryFile:
+                individualItem.append(stores)
+                print(stores)
+        return stores
