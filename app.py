@@ -1,3 +1,4 @@
+import random
 import tkinter as tk
 from tests import runTests
 from item import Item
@@ -19,15 +20,25 @@ def refreshStatusButtonClicked():
         programStatusError.pack()
 
 def displayInventory():
-    loadDisplay = Item.inventory()
-    cleanedData = str(loadDisplay)
-    return tk.Label(
-        frameRight,
-        text=cleanedData)
+    cleanedData = str(warehouseZ1)
+    displayDetails = tk.Label(frameRight, text=cleanedData)
+    return mainPortion.pack_forget() ,displayDetails.pack()
+
+def warehouse():
+    testItem = {'id':random.randint(100, 999), 'name':'Test Item'}
+    warehouseZ1.append(testItem)
+    print(warehouseZ1)
+
+def searchBtnClicked():
+    pass
+    
+warehouseZ1 = []
+warehouseZ2 = []
 
 window = tk.Tk() # Top level (root window)
-
-window.title('Orion - v.0 development build - David Ikin 2021')
+window.minsize(height=400, width=400)
+window.maxsize(height=600, width=800)
+window.title('Orion - v.0 development build')
 
 upperFrame = tk.Frame()
 statusFrame = tk.Frame()
@@ -37,9 +48,7 @@ frameRight = tk.Frame()
 
 searchBarEntry = tk.StringVar()
 
-mainPortion = tk.Canvas(
-    frameRight,
-    bg='red')
+mainPortion = tk.Canvas(frameRight, bg='grey')
 
 label = tk.Label(
     upperFrame,
@@ -73,7 +82,8 @@ entry = tk.Entry(
 )
 searchButton = tk.Button(
     frameLeft,
-    text='search')
+    text='search',
+    command=searchBtnClicked)
 
 generateInventoryButton = tk.Button(
     frameLeft,
@@ -88,12 +98,19 @@ refreshStatusButton = tk.Button(
 devButtonInv = tk.Button(
     frameLeft,
     text='dev button',
+    command=warehouse
+)
+
+displayWarehouse = tk.Button(
+    frameLeft,
+    text='Dev - Display',
+    command=displayInventory
 )
 
 upperFrame.pack()
 statusFrame.pack(side='bottom', fill='x')
 frameLeft.pack(side='left', padx=4, pady=4)
-frameRight.pack(side='right', padx=4, pady=4)
+frameRight.pack(side='right', padx=4, pady=4,)
 
 label.pack(side='left', padx=10)
 
@@ -106,6 +123,7 @@ searchButton.pack(padx=4, pady=4)
 generateInventoryButton.pack(padx=4, pady=4)
 refreshStatusButton.pack(padx=4, pady=4)
 devButtonInv.pack(padx=4, pady=4)
+displayWarehouse.pack(padx=4, pady=4)
 
 mainPortion.pack()
 
